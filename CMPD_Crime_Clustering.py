@@ -71,4 +71,4 @@ crime_types_df["cluster_title"] = crime_types_df["cluster"].map(cluster_titles)
 # Adding the cluster title column to the original dataframe
 df = df.merge(crime_types_df[['HIGHEST_NIBRS_DESCRIPTION', "cluster", "cluster_title"]], on='HIGHEST_NIBRS_DESCRIPTION', how="left")
 
-df.to_csv('cmpd_cleaned_with_clusters.csv', index=False)
+df.to_csv('data\\cmpd_cleaned_with_clusters.csv', index=False)
