@@ -10,7 +10,7 @@ load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 client = OpenAI(api_key=OPENAI_API_KEY)
 
-df = pd.read_csv(r'cmpd_cleaned.csv')
+df = pd.read_csv(r'data\cmpd_cleaned.csv')
 
 # Getting unique crime types
 crime_types = df['HIGHEST_NIBRS_DESCRIPTION'].unique().tolist()
