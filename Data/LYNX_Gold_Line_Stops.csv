@@ -1,0 +1,18 @@
+﻿X,Y,OBJECTID,NAME,Platform,Address,ParknRide,ParkSpace,Zipcode,BikeLocker,BikeRack,StationType,Vending Machine
+1451730.285,540450.6896,1,McDowell Street,Center,"806 E. Trade St. Charlotte, NC",Yes,0,28202,Yes,Yes,Gold Line Station,Yes
+1450530.083,541751.7504,2,CTC/Arena,Center,"316 E. Trade St., Charlotte, NC",Yes,0,28202,Yes,No,Gold Line Extension Station,No
+1447352.536,545115.0333,3,Johnson & Wales,Side,"899 W. Trade St., Charlotte, NC",No,0,28202,Yes,Yes,Gold Line Extension Station,Yes
+1445646.457,549764.0394,4,French Street,Side,"402 Beatties Ford Rd, Charlotte, NC",No,0,28202,Yes,Yes,Gold Line Station,Yes
+1445125.789,547517.9222,5,Bruns Avenue,Side,"1699 W. Trade St., Charlotte, NC",No,0,28216,No,Yes,Gold Line Extension Station,No
+1448283.959,544187.567,6,Charlotte Gateway Station,Side,"690 W. Trade St., Charlotte, NC",Yes,0,28202,No,Yes,Gold Line Extension Station,No
+1449626.083,542725.4164,7,Tryon Street,Side,"103 W. Trade St., Charlotte, NC",Yes,0,28202,No,No,Gold Line Station,Yes
+1444993.583,546512.2503,8,Wesley Heights Way,Center,"1509 W. Trade St., Charlotte, NC",Yes,0,28202,No,Yes,Gold Line Extension Station,No
+1445220.75,548729.3335,9,Johnson C. Smith University,Side,"162 Beatties Ford Rd., Charlotte, NC",Yes,0,28202,No,No,Gold Line Extension Station,No
+1446756.375,545642.4378,10,Irwin Avenue,Side,"1009 W. Trade St., Charlotte, NC",No,0,28202,Yes,No,Gold Line Station,Yes
+1454495.342,537688.0246,11,Elizabeth and Hawthorne,Center,"1618 Elizabeth Ave., Charlotte, NC",No,0,28216,Yes,Yes,Gold Line Station,No
+1456183.349,538808.0059,12,Hawthorne and 8th,Center,"499 Hawthorne Ln., Charlotte, NC",No,0,28204,Yes,Yes,Gold Line Extension Station,NO
+1448865.833,543553.3334,13,Mint Street,Center,"419 W. Trade St., Charlotte, NC",No,0,28204,Yes,Yes,Gold Line Station,Yes
+1451157.689,541085.857,14,Davidson St,Side,"604 E. Trade St., Charlotte, NC",Yes,0,28205,No,Yes,Gold Line Extension Station,No
+1455074.855,537740.3269,15,Hawthorne and 5th,Side,"226 Hawthorne Ln, Charlotte, NC",No,0,28205,No,Yes,Gold Line Station,Yes
+1456801.698,539792.9583,16,Sunnyside,Side,"799 Hawthorne Ln., Charlotte, NC",No,0,28205,Yes,Yes,Gold Line Station,Yes
+1453092.5,539117.4164,17,Central Piedmont Community College,Center,"1160 Elizabeth Ave., Charlotte, NC",Yes,0,28207,Yes,Yes,Gold Line Extension Station,No
