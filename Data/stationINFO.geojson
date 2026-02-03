@@ -1,0 +1,985 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.7604196,
+          35.2868604
+        ]
+      },
+      "properties": {
+        "X": 1474560.163,
+        "Y": 563959.7615,
+        "OBJECTID_1": 28.0,
+        "NAME": "University City Blvd",
+        "Platform": "Center",
+        "Address": "7201 N Tryon St",
+        "ParknRide": "Yes",
+        "ParkSpaces": 1514.0,
+        "Zipcode": 28262,
+        "BikeLocker": "Yes",
+        "BikeRack": " Yes",
+        "StationTyp": "Blue Line Extension Station",
+        "Vending Machine": "No",
+        "OBJECTID": null,
+        "ParkSpace": null,
+        "StationType": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.82609,
+          35.234693
+        ]
+      },
+      "properties": {
+        "X": 1455601.713,
+        "Y": 546150.7109,
+        "OBJECTID_1": 29.0,
+        "NAME": "Parkwood",
+        "Platform": "Side",
+        "Address": "401 Parkwood Ave",
+        "ParknRide": "No",
+        "ParkSpaces": 0.0,
+        "Zipcode": 28206,
+        "BikeLocker": "Yes",
+        "BikeRack": "Yes",
+        "StationTyp": "Blue Line Extension Station",
+        "Vending Machine": "No",
+        "OBJECTID": null,
+        "ParkSpace": null,
+        "StationType": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.8360632,
+          35.2297827
+        ]
+      },
+      "properties": {
+        "X": 1452050.845,
+        "Y": 543571.5209,
+        "OBJECTID_1": 31.0,
+        "NAME": "9th Street",
+        "Platform": "Side",
+        "Address": "239 E 9th St",
+        "ParknRide": "No",
+        "ParkSpaces": 0.0,
+        "Zipcode": 28202,
+        "BikeLocker": "No",
+        "BikeRack": "Yes",
+        "StationTyp": "Blue Line Extension Station",
+        "Vending Machine": "Yes",
+        "OBJECTID": null,
+        "ParkSpace": null,
+        "StationType": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.8171767,
+          35.2413187
+        ]
+      },
+      "properties": {
+        "X": 1457468.035,
+        "Y": 547858.2934,
+        "OBJECTID_1": 32.0,
+        "NAME": "25th Street",
+        "Platform": "Side",
+        "Address": "2215 N Brevard St",
+        "ParknRide": "No",
+        "ParkSpaces": 0.0,
+        "Zipcode": 28206,
+        "BikeLocker": "No",
+        "BikeRack": "Yes",
+        "StationTyp": "Blue Line Extension Station",
+        "Vending Machine": "No",
+        "OBJECTID": null,
+        "ParkSpace": null,
+        "StationType": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.8407108,
+          35.225292
+        ]
+      },
+      "properties": {
+        "X": 1450265.186,
+        "Y": 542026.6546,
+        "OBJECTID_1": 33.0,
+        "NAME": "Charlotte Transportation Center/Arena",
+        "Platform": "Side",
+        "Address": "303 E. Trade St",
+        "ParknRide": "No",
+        "ParkSpaces": 0.0,
+        "Zipcode": 28202,
+        "BikeLocker": "No",
+        "BikeRack": "Yes",
+        "StationTyp": "Blue Line Station",
+        "Vending Machine": "Yes",
+        "OBJECTID": null,
+        "ParkSpace": null,
+        "StationType": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.772194,
+          35.262324
+        ]
+      },
+      "properties": {
+        "X": 1470828.545,
+        "Y": 554254.7577,
+        "OBJECTID_1": 34.0,
+        "NAME": "Old Concord Rd",
+        "Platform": "Side",
+        "Address": "5600 Old Concord Rd",
+        "ParknRide": "Yes",
+        "ParkSpaces": 330.0,
+        "Zipcode": 28213,
+        "BikeLocker": "Yes",
+        "BikeRack": " Yes",
+        "StationTyp": "Blue Line Extension Station",
+        "Vending Machine": "No",
+        "OBJECTID": null,
+        "ParkSpace": null,
+        "StationType": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.7493163,
+          35.3062083
+        ]
+      },
+      "properties": {
+        "X": 1479391.285,
+        "Y": 572595.0427,
+        "OBJECTID_1": 35.0,
+        "NAME": "JW Clay Blvd",
+        "Platform": "Center",
+        "Address": "9101 N Tryon St",
+        "ParknRide": "Yes",
+        "ParkSpaces": 803.0,
+        "Zipcode": 28262,
+        "BikeLocker": "Yes",
+        "BikeRack": "Yes",
+        "StationTyp": "Blue Line Extension Station",
+        "Vending Machine": "Yes",
+        "OBJECTID": null,
+        "ParkSpace": null,
+        "StationType": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.8551939,
+          35.2157775
+        ]
+      },
+      "properties": {
+        "X": 1445930.589,
+        "Y": 538635.5552,
+        "OBJECTID_1": 36.0,
+        "NAME": "Bland St",
+        "Platform": "Side",
+        "Address": "1511 Camden Rd",
+        "ParknRide": "No",
+        "ParkSpaces": 0.0,
+        "Zipcode": 28203,
+        "BikeLocker": "No",
+        "BikeRack": "Yes",
+        "StationTyp": "Blue Line Station",
+        "Vending Machine": "No",
+        "OBJECTID": null,
+        "ParkSpace": null,
+        "StationType": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.8826731,
+          35.1199168
+        ]
+      },
+      "properties": {
+        "X": 1437241.284,
+        "Y": 503736.7859,
+        "OBJECTID_1": 37.0,
+        "NAME": "Sharon Road West",
+        "Platform": "Center",
+        "Address": "8815 Crump Rd",
+        "ParknRide": "Yes",
+        "ParkSpaces": 188.0,
+        "Zipcode": 28134,
+        "BikeLocker": "Yes",
+        "BikeRack": "No",
+        "StationTyp": "Blue Line Station",
+        "Vending Machine": "No",
+        "OBJECTID": null,
+        "ParkSpace": null,
+        "StationType": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.8688646,
+          35.1993757
+        ]
+      },
+      "properties": {
+        "X": 1441693.375,
+        "Y": 532887.8127,
+        "OBJECTID_1": 38.0,
+        "NAME": "New Bern",
+        "Platform": "Side",
+        "Address": "129 New Bern St",
+        "ParknRide": "No",
+        "ParkSpaces": 0.0,
+        "Zipcode": 28203,
+        "BikeLocker": "Yes",
+        "BikeRack": "Yes",
+        "StationTyp": "Blue Line Station",
+        "Vending Machine": "No",
+        "OBJECTID": null,
+        "ParkSpace": null,
+        "StationType": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.7363817,
+          35.307791
+        ]
+      },
+      "properties": {
+        "X": 1482819.653,
+        "Y": 573057.0315,
+        "OBJECTID_1": 40.0,
+        "NAME": "UNC Charlotte",
+        "Platform": "Center",
+        "Address": "9025 Cameron Blvd",
+        "ParknRide": "No",
+        "ParkSpaces": 0.0,
+        "Zipcode": 28262,
+        "BikeLocker": "No",
+        "BikeRack": " Yes",
+        "StationTyp": "Blue Line Extension Station",
+        "Vending Machine": "Yes",
+        "OBJECTID": null,
+        "ParkSpace": null,
+        "StationType": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.877857,
+          35.1630108
+        ]
+      },
+      "properties": {
+        "X": 1438902.425,
+        "Y": 519563.2065,
+        "OBJECTID_1": 42.0,
+        "NAME": "Tyvola",
+        "Platform": "Center",
+        "Address": "5703 Old Pineville Rd",
+        "ParknRide": "Yes",
+        "ParkSpaces": 465.0,
+        "Zipcode": 28217,
+        "BikeLocker": "Yes",
+        "BikeRack": "No",
+        "StationTyp": "Blue Line Station",
+        "Vending Machine": "Yes",
+        "OBJECTID": null,
+        "ParkSpace": null,
+        "StationType": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.838122,
+          35.2279697
+        ]
+      },
+      "properties": {
+        "X": 1451118.811,
+        "Y": 542759.3827,
+        "OBJECTID_1": 43.0,
+        "NAME": "7th St",
+        "Platform": "Side",
+        "Address": "260 E. 7th St",
+        "ParknRide": "No",
+        "ParkSpaces": 0.0,
+        "Zipcode": 28202,
+        "BikeLocker": "No",
+        "BikeRack": "Yes",
+        "StationTyp": "Blue Line Station",
+        "Vending Machine": "Yes",
+        "OBJECTID": null,
+        "ParkSpace": null,
+        "StationType": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.8808686,
+          35.1328922
+        ]
+      },
+      "properties": {
+        "X": 1439051.678,
+        "Y": 509594.6252,
+        "OBJECTID_1": 44.0,
+        "NAME": "Arrowood",
+        "Platform": "Center",
+        "Address": "7717 England St",
+        "ParknRide": "Yes",
+        "ParkSpaces": 289.0,
+        "Zipcode": 28273,
+        "BikeLocker": "Yes",
+        "BikeRack": "No",
+        "StationTyp": "Blue Line Station",
+        "Vending Machine": "No",
+        "OBJECTID": null,
+        "ParkSpace": null,
+        "StationType": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.80591,
+          35.249006
+        ]
+      },
+      "properties": {
+        "X": 1460735.41,
+        "Y": 550484.9715,
+        "OBJECTID_1": 46.0,
+        "NAME": "36th Street",
+        "Platform": "Center",
+        "Address": "400 E 36th St",
+        "ParknRide": "No",
+        "ParkSpaces": 0.0,
+        "Zipcode": 28206,
+        "BikeLocker": "Yes",
+        "BikeRack": "Yes",
+        "StationTyp": "Blue Line Extension Station",
+        "Vending Machine": "Yes",
+        "OBJECTID": null,
+        "ParkSpace": null,
+        "StationType": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.766434,
+          35.277136
+        ]
+      },
+      "properties": {
+        "X": 1472887.165,
+        "Y": 560774.389,
+        "OBJECTID_1": 47.0,
+        "NAME": "Tom Hunter",
+        "Platform": "Center",
+        "Address": "6501 N Tryon St",
+        "ParknRide": "No",
+        "ParkSpaces": 0.0,
+        "Zipcode": 28213,
+        "BikeLocker": "Yes",
+        "BikeRack": "Yes",
+        "StationTyp": "Blue Line Extension Station",
+        "Vending Machine": "No",
+        "OBJECTID": null,
+        "ParkSpace": null,
+        "StationType": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.790929,
+          35.250902
+        ]
+      },
+      "properties": {
+        "X": 1464783.978,
+        "Y": 551263.8315,
+        "OBJECTID_1": 50.0,
+        "NAME": "Sugar Creek",
+        "Platform": "Center",
+        "Address": "700 E Sugar Creek Rd",
+        "ParknRide": "Yes",
+        "ParkSpaces": 630.0,
+        "Zipcode": 28205,
+        "BikeLocker": "Yes",
+        "BikeRack": " Yes",
+        "StationTyp": "Blue Line Extension Station",
+        "Vending Machine": "No",
+        "OBJECTID": null,
+        "ParkSpace": null,
+        "StationType": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.8796037,
+          35.176767
+        ]
+      },
+      "properties": {
+        "X": 1438513.238,
+        "Y": 524222.4996,
+        "OBJECTID_1": 51.0,
+        "NAME": "Woodlawn",
+        "Platform": "Side",
+        "Address": "4756 Old Pineville Rd",
+        "ParknRide": "Yes",
+        "ParkSpaces": 382.0,
+        "Zipcode": 28217,
+        "BikeLocker": "Yes",
+        "BikeRack": "No",
+        "StationTyp": "Blue Line Station",
+        "Vending Machine": "Yes",
+        "OBJECTID": null,
+        "ParkSpace": null,
+        "StationType": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.7531758,
+          35.3007826
+        ]
+      },
+      "properties": {
+        "X": 1477034.798,
+        "Y": 569136.6077,
+        "OBJECTID_1": 52.0,
+        "NAME": " McCullough",
+        "Platform": "Center",
+        "Address": "8315 N Tryon St",
+        "ParknRide": "No",
+        "ParkSpaces": 0.0,
+        "Zipcode": 28262,
+        "BikeLocker": "Yes",
+        "BikeRack": " Yes",
+        "StationTyp": "Blue Line Extension Station",
+        "Vending Machine": "No",
+        "OBJECTID": null,
+        "ParkSpace": null,
+        "StationType": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.8407554,
+          35.2250932
+        ]
+      },
+      "properties": {
+        "X": 1450530.083,
+        "Y": 541751.7504,
+        "OBJECTID_1": null,
+        "NAME": "CTC/Arena",
+        "Platform": "Center",
+        "Address": "316 E. Trade St., Charlotte, NC",
+        "ParknRide": "Yes",
+        "ParkSpaces": null,
+        "Zipcode": 28202,
+        "BikeLocker": "Yes",
+        "BikeRack": "No",
+        "StationTyp": null,
+        "Vending Machine": "No",
+        "OBJECTID": 2.0,
+        "ParkSpace": 0.0,
+        "StationType": "Gold Line Extension Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.851059,
+          35.23369
+        ]
+      },
+      "properties": {
+        "X": 1447352.536,
+        "Y": 545115.0333,
+        "OBJECTID_1": null,
+        "NAME": "Johnson & Wales",
+        "Platform": "Side",
+        "Address": "899 W. Trade St., Charlotte, NC",
+        "ParknRide": "No",
+        "ParkSpaces": null,
+        "Zipcode": 28202,
+        "BikeLocker": "Yes",
+        "BikeRack": "Yes",
+        "StationTyp": null,
+        "Vending Machine": "Yes",
+        "OBJECTID": 3.0,
+        "ParkSpace": 0.0,
+        "StationType": "Gold Line Extension Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.8568226,
+          35.2457793
+        ]
+      },
+      "properties": {
+        "X": 1445646.457,
+        "Y": 549764.0394,
+        "OBJECTID_1": null,
+        "NAME": "French Street",
+        "Platform": "Side",
+        "Address": "402 Beatties Ford Rd, Charlotte, NC",
+        "ParknRide": "No",
+        "ParkSpaces": null,
+        "Zipcode": 28202,
+        "BikeLocker": "Yes",
+        "BikeRack": "Yes",
+        "StationTyp": null,
+        "Vending Machine": "Yes",
+        "OBJECTID": 4.0,
+        "ParkSpace": 0.0,
+        "StationType": "Gold Line Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.858553,
+          35.240143
+        ]
+      },
+      "properties": {
+        "X": 1445125.789,
+        "Y": 547517.9222,
+        "OBJECTID_1": null,
+        "NAME": "Bruns Avenue",
+        "Platform": "Side",
+        "Address": "1699 W. Trade St., Charlotte, NC",
+        "ParknRide": "No",
+        "ParkSpaces": null,
+        "Zipcode": 28216,
+        "BikeLocker": "No",
+        "BikeRack": "Yes",
+        "StationTyp": null,
+        "Vending Machine": "No",
+        "OBJECTID": 5.0,
+        "ParkSpace": 0.0,
+        "StationType": "Gold Line Extension Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.8482142,
+          35.2317381
+        ]
+      },
+      "properties": {
+        "X": 1448283.959,
+        "Y": 544187.567,
+        "OBJECTID_1": null,
+        "NAME": "Charlotte Gateway Station",
+        "Platform": "Side",
+        "Address": "690 W. Trade St., Charlotte, NC",
+        "ParknRide": "Yes",
+        "ParkSpaces": null,
+        "Zipcode": 28202,
+        "BikeLocker": "No",
+        "BikeRack": "Yes",
+        "StationTyp": null,
+        "Vending Machine": "No",
+        "OBJECTID": 6.0,
+        "ParkSpace": 0.0,
+        "StationType": "Gold Line Extension Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.8432779,
+          35.2272473
+        ]
+      },
+      "properties": {
+        "X": 1449626.083,
+        "Y": 542725.4164,
+        "OBJECTID_1": null,
+        "NAME": "Tryon Street",
+        "Platform": "Side",
+        "Address": "103 W. Trade St., Charlotte, NC",
+        "ParknRide": "Yes",
+        "ParkSpaces": null,
+        "Zipcode": 28202,
+        "BikeLocker": "No",
+        "BikeRack": "No",
+        "StationTyp": null,
+        "Vending Machine": "Yes",
+        "OBJECTID": 7.0,
+        "ParkSpace": 0.0,
+        "StationType": "Gold Line Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.8589114,
+          35.2372986
+        ]
+      },
+      "properties": {
+        "X": 1444993.583,
+        "Y": 546512.2503,
+        "OBJECTID_1": null,
+        "NAME": "Wesley Heights Way",
+        "Platform": "Center",
+        "Address": "1509 W. Trade St., Charlotte, NC",
+        "ParknRide": "Yes",
+        "ParkSpaces": null,
+        "Zipcode": 28202,
+        "BikeLocker": "No",
+        "BikeRack": "Yes",
+        "StationTyp": null,
+        "Vending Machine": "No",
+        "OBJECTID": 8.0,
+        "ParkSpace": 0.0,
+        "StationType": "Gold Line Extension Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.8573878,
+          35.2448183
+        ]
+      },
+      "properties": {
+        "X": 1445220.75,
+        "Y": 548729.3335,
+        "OBJECTID_1": null,
+        "NAME": "Johnson C. Smith University",
+        "Platform": "Side",
+        "Address": "162 Beatties Ford Rd., Charlotte, NC",
+        "ParknRide": "Yes",
+        "ParkSpaces": null,
+        "Zipcode": 28202,
+        "BikeLocker": "No",
+        "BikeRack": "No",
+        "StationTyp": null,
+        "Vending Machine": "No",
+        "OBJECTID": 9.0,
+        "ParkSpace": 0.0,
+        "StationType": "Gold Line Extension Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.8526962,
+          35.2350538
+        ]
+      },
+      "properties": {
+        "X": 1446756.375,
+        "Y": 545642.4378,
+        "OBJECTID_1": null,
+        "NAME": "Irwin Avenue",
+        "Platform": "Side",
+        "Address": "1009 W. Trade St., Charlotte, NC",
+        "ParknRide": "No",
+        "ParkSpaces": null,
+        "Zipcode": 28202,
+        "BikeLocker": "Yes",
+        "BikeRack": "No",
+        "StationTyp": null,
+        "Vending Machine": "Yes",
+        "OBJECTID": 10.0,
+        "ParkSpace": 0.0,
+        "StationType": "Gold Line Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.8272609,
+          35.2141336
+        ]
+      },
+      "properties": {
+        "X": 1454495.342,
+        "Y": 537688.0246,
+        "OBJECTID_1": null,
+        "NAME": "Elizabeth and Hawthorne",
+        "Platform": "Center",
+        "Address": "1618 Elizabeth Ave., Charlotte, NC",
+        "ParknRide": "No",
+        "ParkSpaces": null,
+        "Zipcode": 28216,
+        "BikeLocker": "Yes",
+        "BikeRack": "Yes",
+        "StationTyp": null,
+        "Vending Machine": "No",
+        "OBJECTID": 11.0,
+        "ParkSpace": 0.0,
+        "StationType": "Gold Line Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.821234,
+          35.216606
+        ]
+      },
+      "properties": {
+        "X": 1456183.349,
+        "Y": 538808.0059,
+        "OBJECTID_1": null,
+        "NAME": "Hawthorne and 8th",
+        "Platform": "Center",
+        "Address": "499 Hawthorne Ln., Charlotte, NC",
+        "ParknRide": "No",
+        "ParkSpaces": null,
+        "Zipcode": 28204,
+        "BikeLocker": "Yes",
+        "BikeRack": "Yes",
+        "StationTyp": null,
+        "Vending Machine": "NO",
+        "OBJECTID": 12.0,
+        "ParkSpace": 0.0,
+        "StationType": "Gold Line Extension Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.8458255,
+          35.2296801
+        ]
+      },
+      "properties": {
+        "X": 1448865.833,
+        "Y": 543553.3334,
+        "OBJECTID_1": null,
+        "NAME": "Mint Street",
+        "Platform": "Center",
+        "Address": "419 W. Trade St., Charlotte, NC",
+        "ParknRide": "No",
+        "ParkSpaces": null,
+        "Zipcode": 28204,
+        "BikeLocker": "Yes",
+        "BikeRack": "Yes",
+        "StationTyp": null,
+        "Vending Machine": "Yes",
+        "OBJECTID": 13.0,
+        "ParkSpace": 0.0,
+        "StationType": "Gold Line Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.8379572,
+          35.2227424
+        ]
+      },
+      "properties": {
+        "X": 1451157.689,
+        "Y": 541085.857,
+        "OBJECTID_1": null,
+        "NAME": "Davidson St",
+        "Platform": "Side",
+        "Address": "604 E. Trade St., Charlotte, NC",
+        "ParknRide": "Yes",
+        "ParkSpaces": null,
+        "Zipcode": 28205,
+        "BikeLocker": "No",
+        "BikeRack": "Yes",
+        "StationTyp": null,
+        "Vending Machine": "No",
+        "OBJECTID": 14.0,
+        "ParkSpace": 0.0,
+        "StationType": "Gold Line Extension Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.8251222,
+          35.2131758
+        ]
+      },
+      "properties": {
+        "X": 1455074.855,
+        "Y": 537740.3269,
+        "OBJECTID_1": null,
+        "NAME": "Hawthorne and 5th",
+        "Platform": "Side",
+        "Address": "226 Hawthorne Ln, Charlotte, NC",
+        "ParknRide": "No",
+        "ParkSpaces": null,
+        "Zipcode": 28205,
+        "BikeLocker": "No",
+        "BikeRack": "Yes",
+        "StationTyp": null,
+        "Vending Machine": "Yes",
+        "OBJECTID": 15.0,
+        "ParkSpace": 0.0,
+        "StationType": "Gold Line Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.818935,
+          35.219707
+        ]
+      },
+      "properties": {
+        "X": 1456801.698,
+        "Y": 539792.9583,
+        "OBJECTID_1": null,
+        "NAME": "Sunnyside",
+        "Platform": "Side",
+        "Address": "799 Hawthorne Ln., Charlotte, NC",
+        "ParknRide": "No",
+        "ParkSpaces": null,
+        "Zipcode": 28205,
+        "BikeLocker": "Yes",
+        "BikeRack": "Yes",
+        "StationTyp": null,
+        "Vending Machine": "Yes",
+        "OBJECTID": 16.0,
+        "ParkSpace": 0.0,
+        "StationType": "Gold Line Station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.8318142,
+          35.2178016
+        ]
+      },
+      "properties": {
+        "X": 1453092.5,
+        "Y": 539117.4164,
+        "OBJECTID_1": null,
+        "NAME": "Central Piedmont Community College",
+        "Platform": "Center",
+        "Address": "1160 Elizabeth Ave., Charlotte, NC",
+        "ParknRide": "Yes",
+        "ParkSpaces": null,
+        "Zipcode": 28207,
+        "BikeLocker": "Yes",
+        "BikeRack": "Yes",
+        "StationTyp": null,
+        "Vending Machine": "No",
+        "OBJECTID": 17.0,
+        "ParkSpace": 0.0,
+        "StationType": "Gold Line Extension Station"
+      }
+    }
+  ]
+}
