@@ -1,40 +1,20 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-
-
-# -----------------------------------
-# 1. Load data (fixed path)
-# -----------------------------------
 df = pd.read_csv("Data/crime_within_station_walksheds.csv")
-
-
-# -----------------------------------
-# 2. Datetime cleaning (robust)
-# -----------------------------------
+# Datetime cleaning 
 df["DATE_INCIDENT_BEGAN"] = pd.to_datetime(
     df["DATE_INCIDENT_BEGAN"],
     errors="coerce"
 )
-
-
 # Restrict to valid analytical range
 df = df[
     (df["DATE_INCIDENT_BEGAN"].dt.year >= 1970) &
     (df["DATE_INCIDENT_BEGAN"].dt.year <= 2026)
 ]
 
-
-# -----------------------------------
-# 3. Seasonality features (NO HOURS)
-# -----------------------------------
 df["year"] = df["DATE_INCIDENT_BEGAN"].dt.year
 df["month"] = df["DATE_INCIDENT_BEGAN"].dt.month
-
-
-# -----------------------------------
-# 4. Spatial distribution of crimes
-# -----------------------------------
 plt.figure()
 plt.scatter(
     df["LONGITUDE_PUBLIC"],
@@ -47,19 +27,13 @@ plt.ylabel("Latitude")
 plt.tight_layout()
 plt.show()
 
-
-# -----------------------------------
-# 5. Crime types by cluster (top-heavy view)
-# -----------------------------------
+#Crime types by cluster
 cluster_crime = (
     df.groupby(["cluster_title", "HIGHEST_NIBRS_DESCRIPTION"])
       .size()
       .reset_index(name="count")
 )
-
-
 top_cluster_crime = cluster_crime.sort_values("count", ascending=False).head(10)
-
 
 plt.figure()
 sns.barplot(
@@ -74,16 +48,12 @@ plt.ylabel("Cluster")
 plt.tight_layout()
 plt.show()
 
-
-# -----------------------------------
-# 6. Seasonality heatmap (month × crime type)
-# -----------------------------------
+#Seasonality heatmap 
 heatmap_data = (
     df.groupby(["month", "HIGHEST_NIBRS_DESCRIPTION"])
       .size()
       .unstack(fill_value=0)
 )
-
 
 plt.figure(figsize=(12, 6))
 sns.heatmap(heatmap_data, cmap="Reds")
@@ -93,10 +63,7 @@ plt.ylabel("Month")
 plt.tight_layout()
 plt.show()
 
-
-# -----------------------------------
-# 7. Latitude distribution by crime type
-# -----------------------------------
+# Latitude distribution by crime type
 plt.figure(figsize=(10, 5))
 sns.boxplot(
     data=df,
@@ -108,26 +75,18 @@ plt.title("Latitude Distribution by Crime Type")
 plt.tight_layout()
 plt.show()
 
-
-# -----------------------------------
-# 8. Crime CLUSTERS by Patrol Division (MAIN PLOT)
-# -----------------------------------
-plt.figure(figsize=(12, 6))
+#  Crime CLUSTERS by Patrol Division 
 sns.countplot(
     data=df,
     y="cluster_title",
     hue="CMPD_PATROL_DIVISION"
 )
 
-
 plt.title("Crime Cluster Distribution by Patrol Division")
 plt.xlabel("Incident Count")
 plt.ylabel("Crime Cluster")
 
-
-# -----------------------------------
-# 9. Embedded legend: Top 3 crime types per cluster (OPTION 3)
-# -----------------------------------
+# Embedded legend: Top 3 crime types per cluster 
 top_crimes_per_cluster = (
     df.groupby(["cluster_title", "HIGHEST_NIBRS_DESCRIPTION"])
       .size()
@@ -137,7 +96,6 @@ top_crimes_per_cluster = (
       .head(3)
 )
 
-
 legend_table = (
     top_crimes_per_cluster
     .groupby("cluster_title")["HIGHEST_NIBRS_DESCRIPTION"]
@@ -145,12 +103,10 @@ legend_table = (
     .reset_index()
 )
 
-
 legend_text = "\n\n".join(
     f"{row['cluster_title']}:\n{row['HIGHEST_NIBRS_DESCRIPTION']}"
     for _, row in legend_table.iterrows()
 )
-
 
 plt.gcf().text(
     1.02, 0.5,
@@ -159,21 +115,16 @@ plt.gcf().text(
     va="center"
 )
 
-
 plt.tight_layout()
 plt.show()
 
-
-# -----------------------------------
-# 10. Faceted spatial plots by crime type
-# -----------------------------------
+# Faceted spatial plots by crime type
 g = sns.FacetGrid(
     df,
     col="HIGHEST_NIBRS_DESCRIPTION",
     col_wrap=3,
     height=3
 )
-
 
 g.map_dataframe(
     sns.scatterplot,
@@ -182,21 +133,16 @@ g.map_dataframe(
     alpha=0.5
 )
 
-
 g.set_titles("{col_name}")
 g.fig.suptitle("Spatial Distribution by Crime Type", y=1.05)
 plt.show()
 
-
-# -----------------------------------
-# 11. Cluster composition heatmap
-# -----------------------------------
+#  Cluster composition heatmap
 cluster_heatmap = (
     df.groupby(["cluster_title", "HIGHEST_NIBRS_DESCRIPTION"])
       .size()
       .unstack(fill_value=0)
 )
-
 
 plt.figure(figsize=(10, 6))
 sns.heatmap(cluster_heatmap, cmap="Blues")
@@ -206,10 +152,7 @@ plt.ylabel("Cluster")
 plt.tight_layout()
 plt.show()
 
-
-# -----------------------------------
-# 12. Multivariate relationships (seasonality-based, NOT hour)
-# -----------------------------------
+# Multivariate relationships
 sns.pairplot(
     df,
     vars=["LATITUDE_PUBLIC", "LONGITUDE_PUBLIC", "month"],
