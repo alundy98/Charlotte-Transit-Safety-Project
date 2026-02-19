@@ -1,1 +1,3 @@
 .env
+Data/cmpd_cleaned_with_clusters.csv
+Data/cmpd_cleaned.csv
