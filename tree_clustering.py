@@ -16,6 +16,7 @@ OUT_TREES_GEOJSON = "data/trees_clustered_by_crime_centroids.geojson"
 OUT_TREES_CSV = "data/trees_clustered_by_crime_centroids.csv"
 OUT_CENTROIDS_GEOJSON = "data/crime_centroids_unique.geojson"
 OUT_SUMMARY_CSV = "data/cluster_summary.csv"
+OUT_CLUSTERS_POLYGONS_GEOJSON = "data/tree_cluster_polygons.geojson"
 
 OUT_CRIMES_FEATURES_GEOJSON = "data/crimes_with_tree_features.geojson"
 OUT_CRIMES_FEATURES_CSV = "data/crimes_with_tree_features.csv"
@@ -222,6 +223,97 @@ def main():
         .sort_values("tree_count", ascending=False)
     )
     summary.to_csv(OUT_SUMMARY_CSV, index=False)
+
+    # Adding polygon radii for all of the clusters
+    # Get the snapped crime centroid point geometry for each centroid_id (cluster "center")
+    centroid_geom = centroids[["centroid_id", "geometry"]].copy()
+    centroid_geom = centroid_geom.rename(columns={"geometry": "centroid_geom"})
+
+    # Cluster stats from trees assigned to each centroid_id
+    cluster_stats = (
+        joined.dropna(subset=["centroid_id"])
+        .groupby("centroid_id")
+        .agg(
+            tree_count=("centroid_id", "size"),
+            mean_dist_m=("dist_m", "mean"),
+            max_dist_m=("dist_m", "max"),
+            # you can add more tree attribute summaries here if you want
+        )
+        .reset_index()
+    )
+
+    # Merge center geometry onto stats
+    cluster_stats = cluster_stats.merge(centroid_geom, on="centroid_id", how="left")
+
+    # For each centroid_id, build convex hull of its tree points
+    # Make sure joined has geometry active and it's the tree point geometry in meters
+    joined_gdf = joined.dropna(subset=["centroid_id"]).copy()
+    joined_gdf = gpd.GeoDataFrame(joined_gdf, geometry="geometry", crs=f"EPSG:{METRIC_EPSG}")
+
+    # Dissolve points by centroid_id (keeps geometry active as "geometry")
+    dissolved = joined_gdf[["centroid_id", "geometry"]].dissolve(by="centroid_id")
+
+    # Build hull polygons and convert to a GeoDataFrame with proper active geometry
+    hulls = dissolved.convex_hull
+    hulls = gpd.GeoDataFrame(hulls, geometry=hulls, crs=f"EPSG:{METRIC_EPSG}").reset_index()
+
+    # Optional padding buffer (meters) to make it more visible on a map
+    hulls["geometry"] = hulls.geometry.buffer(10)
+
+    # Attach cluster stats + centroid centerpoint to hulls
+    hulls = hulls.merge(cluster_stats, on="centroid_id", how="left")
+
+    # cluster_stats currently has centroid_geom as a plain column; set it as a geometry temporarily to get x/y
+    centers = gpd.GeoDataFrame(
+        cluster_stats[["centroid_id", "centroid_geom"]],
+        geometry="centroid_geom",
+        crs=f"EPSG:{METRIC_EPSG}",
+    )
+    hulls = hulls.merge(
+        centers.assign(center_x_m=centers.geometry.x, center_y_m=centers.geometry.y)[
+            ["centroid_id", "center_x_m", "center_y_m"]
+        ],
+        on="centroid_id",
+        how="left",
+    )
+
+    # Export as GeoJSON in WGS84 (hull polygons)
+    clusters_out = hulls.to_crs(epsg=4326)
+
+    # If centroid_geom exists, it is STILL in METRIC_EPSG because it's not the active geometry.
+    # Reproject it separately before extracting lon/lat.
+    if "centroid_geom" in hulls.columns:
+        centers_4326 = gpd.GeoSeries(hulls["centroid_geom"], crs=f"EPSG:{METRIC_EPSG}").to_crs(epsg=4326)
+        clusters_out["center_lon"] = centers_4326.x
+        clusters_out["center_lat"] = centers_4326.y
+
+        # Drop extra geometry column so GeoJSON only has one geometry (the hull polygon)
+        clusters_out = clusters_out.drop(columns=["centroid_geom"], errors="ignore")
+
+    # Test
+    print("hulls CRS:", hulls.crs)
+    print("clusters_out CRS:", clusters_out.crs)
+    print("centroid_geom sample:", hulls["centroid_geom"].iloc[0])
+
+    # Make sure the active geometry is the hull polygon
+    clusters_out = clusters_out.set_geometry("geometry")
+
+    # Find any additional geometry-typed columns and remove them
+    extra_geom_cols = [
+        c for c in clusters_out.columns
+        if c != clusters_out.geometry.name and str(clusters_out[c].dtype) == "geometry"
+    ]
+
+    print("Extra geometry columns being removed:", extra_geom_cols)
+
+    # If you want to KEEP them as attributes instead of dropping, convert to WKT:
+    # for c in extra_geom_cols:
+    #     clusters_out[c] = clusters_out[c].to_wkt()
+
+    # Otherwise, just drop them (recommended for GeoJSON)
+    clusters_out = clusters_out.drop(columns=extra_geom_cols, errors="ignore")
+
+    clusters_out.to_file(OUT_CLUSTERS_POLYGONS_GEOJSON, driver="GeoJSON")
 
     print("[DONE] Trees clustered using 15m-snapped crime centroids.")
 
