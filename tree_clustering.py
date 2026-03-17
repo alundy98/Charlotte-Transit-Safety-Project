@@ -9,17 +9,17 @@ import matplotlib.pyplot as plt
 
 warnings.filterwarnings("ignore", category=UserWarning)
 
-CRIMES_PATH = "data/crimes_with_station_lists.geojson"
-TREES_PATH = "data/trees_cleaned.geojson"
+CRIMES_PATH = "Data/crimes_with_station_lists.geojson"
+TREES_PATH = "Data/trees_cleaned.geojson"
 
-OUT_TREES_GEOJSON = "data/trees_clustered_by_crime_centroids.geojson"
-OUT_TREES_CSV = "data/trees_clustered_by_crime_centroids.csv"
-OUT_CENTROIDS_GEOJSON = "data/crime_centroids_unique.geojson"
-OUT_SUMMARY_CSV = "data/cluster_summary.csv"
-OUT_CLUSTERS_POLYGONS_GEOJSON = "data/tree_cluster_polygons.geojson"
+OUT_TREES_GEOJSON = "Data/trees_clustered_by_crime_centroids.geojson"
+OUT_TREES_CSV = "Data/trees_clustered_by_crime_centroids.csv"
+OUT_CENTROIDS_GEOJSON = "Data/crime_centroids_unique.geojson"
+OUT_SUMMARY_CSV = "Data/cluster_summary.csv"
+OUT_CLUSTERS_POLYGONS_GEOJSON = "Data/tree_cluster_polygons.geojson"
 
-OUT_CRIMES_FEATURES_GEOJSON = "data/crimes_with_tree_features.geojson"
-OUT_CRIMES_FEATURES_CSV = "data/crimes_with_tree_features.csv"
+OUT_CRIMES_FEATURES_GEOJSON = "Data/crimes_with_tree_features.geojson"
+OUT_CRIMES_FEATURES_CSV = "Data/crimes_with_tree_features.csv"
 
 # Tree feature radii (meters)
 TREE_RADII_M = [10, 25, 50]
