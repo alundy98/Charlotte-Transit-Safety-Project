@@ -2,3 +2,4 @@
 Data/cmpd_cleaned_with_clusters.csv
 Data/cmpd_cleaned.csv
 model/modeling_dataset_hourly.csv
+geo_map.html
