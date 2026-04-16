@@ -738,6 +738,271 @@ def summarize_prediction_grid(
     return pd.DataFrame([r.as_dict() for r in results])
 
 
+# -----------------------------------------------------------------------------
+# Simulation route comparison helpers
+# -----------------------------------------------------------------------------
+
+def _resolve_centroid_id_column(df: pd.DataFrame) -> str:
+    return _resolve_existing_column(
+        df,
+        "centroid_id",
+        aliases=["centroid", "location_id", "crime_centroid_id", "centroid_idx"],
+    )
+
+
+
+def _extract_route_counts(
+    df: pd.DataFrame,
+    outcome_col: str = "crime_stopped",
+) -> Tuple[int, int, int]:
+    if outcome_col not in df.columns:
+        raise KeyError(f"Missing required column: {outcome_col}")
+
+    outcome = pd.to_numeric(df[outcome_col], errors="coerce").fillna(0)
+
+    stopped = int((outcome == 1).sum())
+    happened = int((outcome == 0).sum())
+    total = stopped + happened
+
+    if total <= 0:
+        raise ValueError(
+            "The route-results file has zero valid crime outcomes. "
+            "Expected binary values of 0 and 1 in the outcome column."
+        )
+
+    return stopped, happened, total
+
+
+
+def _normal_cdf(z: float) -> float:
+    return float(0.5 * (1.0 + np.math.erf(z / np.sqrt(2.0))))
+
+
+
+def _two_sample_proportion_z_test(
+    successes_1: int,
+    total_1: int,
+    successes_2: int,
+    total_2: int,
+    alternative: str = "larger",
+) -> Dict[str, float]:
+    if total_1 <= 0 or total_2 <= 0:
+        raise ValueError("Both samples must have positive totals for a two-sample proportion z-test.")
+
+    p1 = successes_1 / total_1
+    p2 = successes_2 / total_2
+    pooled = (successes_1 + successes_2) / (total_1 + total_2)
+    se = np.sqrt(pooled * (1.0 - pooled) * ((1.0 / total_1) + (1.0 / total_2)))
+
+    if se == 0:
+        z_stat = 0.0
+        p_value = 1.0
+    else:
+        z_stat = (p2 - p1) / se
+        if alternative == "larger":
+            p_value = 1.0 - _normal_cdf(z_stat)
+        elif alternative == "smaller":
+            p_value = _normal_cdf(z_stat)
+        else:
+            p_value = 2.0 * min(_normal_cdf(z_stat), 1.0 - _normal_cdf(z_stat))
+
+    return {
+        "p1": float(p1),
+        "p2": float(p2),
+        "pooled_proportion": float(pooled),
+        "z_stat": float(z_stat),
+        "p_value": float(p_value),
+        "standard_error": float(se),
+    }
+
+
+
+def _distance_to_station_priority_weight(
+    distance_m: float,
+    max_weight: int = 6,
+    bucket_size_m: float = 100.0,
+) -> int:
+    if pd.isna(distance_m):
+        return 1
+    bucket = int(np.floor(max(float(distance_m), 0.0) / bucket_size_m))
+    return int(max(1, max_weight - bucket))
+
+
+
+def _build_centroid_priority_table(
+    centroid_locations_df: pd.DataFrame,
+    centroid_id_col: str = "centroid_id",
+    distance_col: str = "min_station_dist_m",
+) -> pd.DataFrame:
+    centroid_id_col = _resolve_existing_column(
+        centroid_locations_df,
+        centroid_id_col,
+        aliases=["centroid", "location_id", "crime_centroid_id"],
+    )
+    distance_col = _resolve_existing_column(
+        centroid_locations_df,
+        distance_col,
+        aliases=["mean_station_dist_m", "nearest_station_dist_m"],
+    )
+
+    out = centroid_locations_df[[centroid_id_col, distance_col]].copy()
+    out[centroid_id_col] = pd.to_numeric(out[centroid_id_col], errors="coerce")
+    out[distance_col] = pd.to_numeric(out[distance_col], errors="coerce")
+    out = out.dropna(subset=[centroid_id_col]).drop_duplicates(subset=[centroid_id_col])
+    out["station_priority_weight"] = out[distance_col].apply(_distance_to_station_priority_weight)
+    return out.rename(columns={centroid_id_col: "centroid_id", distance_col: "station_distance_m"})
+
+
+
+def _top_weighted_centroids(
+    df: pd.DataFrame,
+    centroid_locations_df: pd.DataFrame,
+    *,
+    outcome_col: str = "crime_stopped",
+    outcome_value: int,
+    top_n: int = 10,
+) -> List[Dict[str, Any]]:
+    centroid_col = _resolve_centroid_id_column(df)
+
+    if outcome_col not in df.columns:
+        raise KeyError(f"Missing required column: {outcome_col}")
+
+    work = df[[centroid_col, outcome_col]].copy()
+    work[centroid_col] = pd.to_numeric(work[centroid_col], errors="coerce")
+    work[outcome_col] = pd.to_numeric(work[outcome_col], errors="coerce")
+    work = work.dropna(subset=[centroid_col, outcome_col])
+
+    # Keep only rows matching the requested outcome:
+    # outcome_value = 0 -> crimes happened
+    # outcome_value = 1 -> crimes stopped
+    work = work[work[outcome_col] == outcome_value]
+
+    counts = (
+        work.groupby(centroid_col, dropna=True)
+        .size()
+        .reset_index(name="raw_count")
+    )
+
+    priority = _build_centroid_priority_table(centroid_locations_df)
+    ranked = counts.merge(
+        priority,
+        how="left",
+        left_on=centroid_col,
+        right_on="centroid_id",
+    )
+
+    ranked["station_priority_weight"] = ranked["station_priority_weight"].fillna(1).astype(int)
+    ranked["station_distance_m"] = pd.to_numeric(ranked["station_distance_m"], errors="coerce")
+    ranked["weighted_count"] = ranked["raw_count"] * ranked["station_priority_weight"]
+
+    ranked = ranked.sort_values(
+        by=["weighted_count", "raw_count", "station_priority_weight", "station_distance_m"],
+        ascending=[False, False, False, True],
+    ).head(top_n)
+
+    return [
+        {
+            "centroid_id": int(row["centroid_id"]),
+            "raw_count": int(row["raw_count"]),
+            "station_priority_weight": int(row["station_priority_weight"]),
+            "weighted_count": float(row["weighted_count"]),
+            "station_distance_m": None if pd.isna(row["station_distance_m"]) else float(row["station_distance_m"]),
+        }
+        for _, row in ranked.iterrows()
+    ]
+
+
+
+def compare_simulation_routes(
+    previous_route_csv: Union[str, Path],
+    current_route_csv: Union[str, Path],
+    centroid_locations_csv: Union[str, Path],
+    *,
+    outcome_col: str = "crime_stopped",
+    alpha: float = 0.05,
+    top_n: int = 10,
+) -> Dict[str, Any]:
+    """
+    Compare two simulation result CSVs using a two-sample proportion z-test.
+
+    Assumptions
+    -----------
+    - Each CSV contains a single binary outcome column where:
+        1 = crime was stopped
+        0 = crime happened
+    - The route is considered "better" only when the most recent route has both:
+        1. a higher stopped proportion than the previous route, and
+        2. a one-sided z-test p-value < alpha.
+    - Centroid rankings are produced from the most recent route CSV.
+    - Returned centroid lists are re-ranked using a station-distance priority
+      weight from 1 to 6, where 6 is closest to the nearest station and the
+      weight drops by 1 for each additional 100 meters.
+    """
+    previous_df = pd.read_csv(previous_route_csv)
+    current_df = pd.read_csv(current_route_csv)
+    centroid_locations_df = pd.read_csv(centroid_locations_csv)
+
+    if outcome_col not in previous_df.columns:
+        raise KeyError(f"Missing required column in previous route CSV: {outcome_col}")
+    if outcome_col not in current_df.columns:
+        raise KeyError(f"Missing required column in current route CSV: {outcome_col}")
+
+    prev_stopped, prev_happened, prev_total = _extract_route_counts(
+        previous_df,
+        outcome_col=outcome_col,
+    )
+    curr_stopped, curr_happened, curr_total = _extract_route_counts(
+        current_df,
+        outcome_col=outcome_col,
+    )
+
+    test = _two_sample_proportion_z_test(
+        successes_1=prev_stopped,
+        total_1=prev_total,
+        successes_2=curr_stopped,
+        total_2=curr_total,
+        alternative="larger",
+    )
+
+    is_better = bool((test["p2"] > test["p1"]) and (test["p_value"] < alpha))
+
+    top_happened = _top_weighted_centroids(
+        df=current_df,
+        centroid_locations_df=centroid_locations_df,
+        outcome_col=outcome_col,
+        outcome_value=0,
+        top_n=top_n,
+    )
+
+    top_stopped = _top_weighted_centroids(
+        df=current_df,
+        centroid_locations_df=centroid_locations_df,
+        outcome_col=outcome_col,
+        outcome_value=1,
+        top_n=top_n,
+    )
+
+    return {
+        "new_route_better": is_better,
+        "alpha": float(alpha),
+        "z_test": test,
+        "previous_route": {
+            "crimes_stopped": int(prev_stopped),
+            "crimes_happened": int(prev_happened),
+            "total_crime_outcomes": int(prev_total),
+            "stopped_proportion": float(test["p1"]),
+        },
+        "current_route": {
+            "crimes_stopped": int(curr_stopped),
+            "crimes_happened": int(curr_happened),
+            "total_crime_outcomes": int(curr_total),
+            "stopped_proportion": float(test["p2"]),
+        },
+        "top_happened_centroids": top_happened,
+        "top_stopped_centroids": top_stopped,
+    }
+
+
 def example_usage() -> None:
     """
     Minimal example for local testing. Adjust keys to match your real saved bundle.
