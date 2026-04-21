@@ -1,0 +1,12 @@
+metric,mean,std,min,max
+attempted_incidents,177.3,14.436412,151.0,209.0
+blocked_incidents,19.0,4.823553,12.0,27.0
+realized_incidents,158.3,13.8351,131.0,196.0
+average_passenger_exposure,4.315501,0.072814,4.15329,4.484635
+patrol_coverage_ratio,0.342105,0.0,0.342105,0.342105
+high_risk_station_visits,53.0,0.0,53.0,53.0
+hotspot_coverage_ratio,0.75,0.0,0.75,0.75
+top_hotspot_visits,6.0,0.0,6.0,6.0
+station_distribution_mae,0.046496,0.002562,0.042249,0.05252
+centroid_distribution_mae,0.029989,0.00175,0.025187,0.03343
+hour_distribution_mae,0.017043,0.002592,0.011984,0.023169
